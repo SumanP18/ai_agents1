@@ -30,7 +30,7 @@ agent = create_agent(
 
 # Run the agent
 response = agent.invoke(
-    {"messages": [{"role": "user", "content": "what is the weather in sf and is 2001 prime and send an email to srimanyacharya@gmail.com with the subject 'Test Email from python' and content 'Hello! This email was sent using Python.'"}]}
+    {"messages": [{"role": "user", "content": "what is the weather in sf and is 2001 prime and send an email to srimanyuacharya@gmail.com with the subject 'Test Email from python' and content 'Hello! This email was sent using Python.'"}]}
 )
 
 # Print only the final AI response
