@@ -1,19 +1,20 @@
 import smtplib
 from email.message import EmailMessage
-sender_email = "sumanpone8@gmail.com"
-receiver_email = "srimanyuacharya@gmail.com"
-app_password = "zbhh aspc lmki imds"
+from secrets import sender_email,app_password,receiver_email
+
 # Create the email
-msg = EmailMessage()
-msg.set_content("Hello! This email was sent using Python.")
-msg["Subject"] = "Test Email"
-msg["From"] = "sumanpone8@gmail.com"
-msg["To"] = "srimanyuacharya@gmail.com"
+def send_email(receiver_email: str, subject: str, content: str) -> None:
+    """send an email to the receiver with the given subject and content"""
+    msg = EmailMessage()
+    msg.set_content(content)
+    msg["Subject"] = subject
+    msg["From"] = sender_email
+    msg["To"] = receiver_email
 
-# Send the email
-with smtplib.SMTP("smtp.gmail.com", 587) as server:
-    server.starttls()               # Secure the connection
-    server.login(sender_email, app_password)
-    server.send_message(msg)
+    # Send the email
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        server.login(sender_email, app_password)
+        server.send_message(msg)
 
-print("Email sent!")
+    print("Email sent!")
+
